@@ -1,4 +1,4 @@
--- Leaderstats / ACT 1 --
+-- Leaderstats / ACT 1-2 --
 -- Guardo el servicio Players (Como import en python)
 local Players = game:GetService("Players") 
 
@@ -10,7 +10,13 @@ Players.PlayerAdded:Connect(function(player)
     miCarpeta.Name = "leaderstats"                  -- Asigno un nombre al objeto (nombre variable no cambia)
     miValor.Name = "Monedas"
     miValor.Value = 0
-    
+
     miValor.Parent = miCarpeta                      -- Meto el valor dentro de la carpeta
     miCarpeta.Parent = player                       -- Meto la carpeta dentro del jugador
+
+    -- Bucle que añade dinero de forma periodica
+    while true do
+        task.wait(1)
+        miValor.Value += 1
+    end
 end)
