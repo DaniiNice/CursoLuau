@@ -1,5 +1,5 @@
--- Recoleccion | MODULO 2 / RETO 5 --
-local arbol = workspace.Arboles:WaitForChild("ArbolMadera")
+-- Recoleccion --
+local arbol = workspace.Map.Arboles:WaitForChild("ArbolMadera")
 local clickDetector = arbol:WaitForChild("ClickDetector")
 local sonidoGolpe = arbol:WaitForChild("SonidoGolpe")
 local sonidoRomper = arbol:WaitForChild("SonidoRomper")

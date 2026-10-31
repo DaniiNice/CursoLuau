@@ -1,4 +1,4 @@
--- Leaderstats | MODULO 1 / RETO 1-3 --
+-- Leaderstats --
 -- Guardo el servicio Players (Como import en python)
 local Players = game:GetService("Players")
 local DataStoreService = game:GetService("DataStoreService")
