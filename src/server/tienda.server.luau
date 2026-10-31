@@ -1,6 +1,6 @@
 -- Tienda | MODULO 2 / RETO 4 --
 -- Espero a que carge el boton y me conecto a el
-local boton = workspace:WaitForChild("BotonVelocidad")
+local boton = workspace.BotonInicial:WaitForChild("BotonVelocidad")
 local Players = game:GetService("Players")
 debounce = false                                                  -- Añado un cooldown para evitar multigastos
 
