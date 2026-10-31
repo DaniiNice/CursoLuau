@@ -1,6 +1,8 @@
 -- Recoleccion | MODULO 2 / RETO 5 --
 local arbol = workspace.Arboles:WaitForChild("ArbolMadera")
 local clickDetector = arbol:WaitForChild("ClickDetector")
+local sonidoGolpe = arbol:WaitForChild("SonidoGolpe")
+local sonidoRomper = arbol:WaitForChild("SonidoRomper")
 local debounce = false
 local golpesRestantes = 5
 
@@ -13,6 +15,7 @@ clickDetector.MouseClick:Connect(function(jugador)
     if jugador then
         debounce = true
         golpesRestantes -= 1
+        sonidoGolpe:Play()
         local dineroJugador = jugador.leaderstats.Monedas
 
         -- Recoleccion despawn/spawn
@@ -20,8 +23,9 @@ clickDetector.MouseClick:Connect(function(jugador)
             dineroJugador.Value += 10
             arbol.CanCollide = false
             clickDetector.MaxActivationDistance = 0
-            
+
             -- Animacion simple de recoleccion
+            sonidoRomper:Play()
             for i = 1, 10 do                             
                 arbol.Transparency += 0.1
                 task.wait(0.1)
