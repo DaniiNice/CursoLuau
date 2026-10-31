@@ -9,9 +9,7 @@ local debounce = false
 
 
 clickdetector.MouseClick:Connect(function(jugador)
-    if debounce then
-        return
-    end
+    if debounce then return end
 
     if jugador then
         debounce = true
@@ -20,7 +18,7 @@ clickdetector.MouseClick:Connect(function(jugador)
         if cubosActivos <= 5 then
             -- Creo el nuevo bloque con los valores por defecto y lo muevo a una carpeta con la ubicacion del spawner
             local block = Instance.new("Part")
-            block.Size = Vector3.new(2, 2, 2)
+            block.Size = Vector3.new(4, 4, 4)
             block.Position = spawner.Position
             block.Anchored = false
             block.CanCollide = true

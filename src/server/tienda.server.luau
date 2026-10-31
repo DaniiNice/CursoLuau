@@ -7,9 +7,7 @@ debounce = false                                                  -- Añado un c
 
 boton.Touched:Connect(function(objetoQueToco)
     -- Si esta en cooldown, sale de la funcion
-    if debounce then
-        return
-    end
+    if debounce then return end
 
     local avatar = objetoQueToco.Parent                           -- Guardo el modelo del usuario
     local jugador = Players:GetPlayerFromCharacter(avatar)        -- Busco el usuario usando el modelo

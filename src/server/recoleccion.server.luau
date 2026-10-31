@@ -8,9 +8,7 @@ local golpesRestantes = 5
 
 
 clickDetector.MouseClick:Connect(function(jugador)
-    if debounce then
-        return
-    end
+    if debounce then return end
      
     if jugador then
         debounce = true
