@@ -23,10 +23,19 @@ Players.PlayerAdded:Connect(function(player)
     end)
 
     -- Si hay datos del pasado, se lo asigno. Si no, se queda el valor por defecto
-    if datosGuardados and datosGuardados.Monedas then
-        miValor.Value = datosGuardados.Monedas
-    else 
-        miValor.Value = 0                           -- Valor si es un jugador nuevo
+    if datosGuardados then
+        miValor.Value = datosGuardados.Monedas or 0
+
+        -- Si el jugador ya tenía una potencia guardada, se la aplicamos
+        if datosGuardados.PotenciaGenerador then
+            local botonCentral = workspace.Map.BotonCentral:WaitForChild("BotonGenerador")
+            botonCentral:SetAttribute("CantidadPorClick", datosGuardados.PotenciaGenerador)
+        end
+
+        -- Si es de nivel 2, eliminamos el boton
+        if datosGuardados.PotenciaGenerador == 2 then
+            workspace.Map.Botones.MejoraGenerador:Destroy()
+        end
     end
 
     miValor.Parent = miCarpeta                      -- Meto el valor dentro de la carpeta
@@ -42,9 +51,12 @@ end)
 
 Players.PlayerRemoving:Connect(function(player)
     local clave = "Jugador_" .. player.UserId
-    local monedasActuales = player.leaderstats.Monedas.Value        -- Conecto el valor actual de la moneda ya creada
-    local datosGuardados = {                                        -- Creo la tabla de datos compuesta para las monedas y mejoras
+    local monedasActuales = player.leaderstats.Monedas.Value                            -- Conecto el valor actual de la moneda ya creada
+    local botonCentral = workspace.Map.BotonCentral:WaitForChild("BotonGenerador")
+    local potenciaActual = botonCentral:GetAttribute("CantidadPorClick") or 1
+    local datosGuardados = {                                                            -- Creo la tabla de datos compuesta para las monedas y mejoras
         Monedas = monedasActuales,
+        PotenciaGenerador = potenciaActual
         -- En un futuro se añadiran mas guardados aqui
     }
 
