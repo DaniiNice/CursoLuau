@@ -1,6 +1,6 @@
 -- Mejoras --
 -- Espero a que carge el boton y me conecto a el
-local boton = workspace.Map.BotonInicial:WaitForChild("BotonVelocidad")
+local boton = workspace.Map.Botones.MejoraVelocidad:WaitForChild("BotonVelocidad")
 local Players = game:GetService("Players")
 debounce = false                                                  -- Añado un cooldown para evitar multigastos
 

@@ -18,7 +18,7 @@ clickDetector.MouseClick:Connect(function(jugador)
 
         -- Recoleccion despawn/spawn
         if golpesRestantes <= 0 then
-            dineroJugador.Value += 10
+            dineroJugador.Value += 1000
             arbol.CanCollide = false
             clickDetector.MaxActivationDistance = 0
 

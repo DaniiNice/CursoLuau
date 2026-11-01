@@ -12,16 +12,21 @@ while true do
         local cubosActivos = workspace:GetAttribute("CubosActivos")
 
         for i, cubo in ipairs(cubosEncontrados) do
+            if not cubo or cubo.Parent == nil then continue end                 -- Evito que crashe al leer un cubo destruyendose
+
             local estadoActual = cubo:GetAttribute("Estado")
             local creador = cubo:GetAttribute("Creador")
-            local jugadorReal = Players:FindFirstChild(creador)
 
-            if estadoActual == "Hierro" and jugadorReal then
-                efectoVenta:Emit(20)                                            -- Activo el efecto de forma explosiva
-                sonidoVenta:Play()
-                jugadorReal.leaderstats.Monedas.Value += 15                     -- Suma el dinero al creador
-                workspace:SetAttribute("CubosActivos", cubosActivos - 1)        -- Le resto el valor compartido sin sustituirlo
-                cubo:Destroy()
+            if creador ~= nil then                                              -- Evito que crashe al leer un atributo destruyendose
+                local jugadorReal = Players:FindFirstChild(creador)
+
+                if estadoActual == "Hierro" and jugadorReal then
+                    efectoVenta:Emit(20)                                            -- Activo el efecto de forma explosiva
+                    sonidoVenta:Play()
+                    jugadorReal.leaderstats.Monedas.Value += 15                     -- Suma el dinero al creador
+                    workspace:SetAttribute("CubosActivos", cubosActivos - 1)        -- Le resto el valor compartido sin sustituirlo
+                    cubo:Destroy()
+                end
             end
         end
     end
