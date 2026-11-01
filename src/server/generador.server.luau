@@ -4,7 +4,7 @@ local clickdetector = botonGenerador:WaitForChild("ClickDetector")
 local spawner = workspace.Map.Spawner:WaitForChild("SpawnPoint")
 local sonidoError = botonGenerador:WaitForChild("SonidoError")
 local sonidoClick = botonGenerador:WaitForChild("SonidoClick")
-local cubosActivos = 0
+workspace:SetAttribute("CubosActivos", 0)                                   -- Creo un valor compartido
 local debounce = false
 
 
@@ -14,18 +14,20 @@ clickdetector.MouseClick:Connect(function(jugador)
     if jugador then
         debounce = true
         local guiError = jugador.PlayerGui:WaitForChild("ErrorBlocks")
+        local cubosActivos = workspace:GetAttribute("CubosActivos")
 
-        if cubosActivos <= 5 then
+        if cubosActivos < 5 then
             -- Creo el nuevo bloque con los valores por defecto y lo muevo a una carpeta con la ubicacion del spawner
             local block = Instance.new("Part")
             block.Size = Vector3.new(4, 4, 4)
             block.Position = spawner.Position
             block.Anchored = false
             block.CanCollide = true
-            block:SetAttribute("Estado", "MateriaPrima")
+            block:SetAttribute("Estado", "MateriaPrima")                    -- Creo el estado inicial del material
+            block:SetAttribute("Creador", jugador.Name)                     -- Guardo el creador en un atributo
             block.Parent = workspace.Map.Cubos
             sonidoClick:Play()
-            cubosActivos += 1
+            workspace:SetAttribute("CubosActivos", cubosActivos + 1)        -- Actualizo directamente en el valor compartido
 
             task.wait(0.2)
 
