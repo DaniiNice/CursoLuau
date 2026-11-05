@@ -1,6 +1,6 @@
 -- Zona de Ventas --
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ConfigMateriales = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("ConfigMateriales"))
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local configMateriales = require(replicatedStorage:WaitForChild("Shared"):WaitForChild("ConfigMateriales"))
 local zonaVenta = workspace.Map.Ventas.TouchZone:WaitForChild("ZonaVenta")
 local efectoVenta = zonaVenta.Attachment:WaitForChild("ChispasVenta")
 local sonidoVenta = zonaVenta:WaitForChild("SonidoMonedas")
@@ -21,7 +21,7 @@ while true do
 
             if creador ~= nil then                                              -- Evito que crashe al leer un atributo destruyendose
                 local jugadorReal = Players:FindFirstChild(creador)
-                local datosDelMaterial = ConfigMateriales.Tipos[estadoActual]       -- Guardo el resultado entero del objeto del material consultado en el ModuleScript
+                local datosDelMaterial = configMateriales.Tipos[estadoActual]       -- Guardo el resultado entero del objeto del material consultado en el ModuleScript
 
                 if datosDelMaterial and jugadorReal then                            -- Compruebo si el material es valido y tiene creador
                     local precio = datosDelMaterial.PrecioVenta

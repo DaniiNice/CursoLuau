@@ -5,7 +5,7 @@ local ConfigMateriales = {}
 ConfigMateriales.Tipos = {
 	MateriaPrima = {
 		Nombre = "Materia Prima",
-		Color = Color3.fromRGB(160, 120, 90),
+		Color = Color3.fromRGB(163, 162, 165),
 		Material = Enum.Material.Plastic,
 		PrecioVenta = 2,
 		Peso = 0.2
@@ -29,8 +29,8 @@ ConfigMateriales.Tipos = {
 -- Tabla de probabilidades para el Spawneo (Gacha)
 -- La suma total debe dar 100
 ConfigMateriales.ProbabilidadesSpawneo = {
-	{ Material = "MateriaPrima", 	Probabilidad = 85 },
-	{ Material = "Hierro",			Probabilidad = 15 }
+	{ Material = "MateriaPrima", 	Probabilidad = 85 },			-- Equivale al rango 1 al 85
+	{ Material = "Hierro",			Probabilidad = 15 }				-- Equivale al rango 1 al 15... etc
 }
 
 return ConfigMateriales

@@ -43,7 +43,7 @@ Players.PlayerAdded:Connect(function(player)
 
     -- Bucle de autodinero de forma periodica
     while true do
-        task.wait(1)
+        task.wait(5)
         miValor.Value += 1
     end
 end)
